@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import ViewerItem from "./ViewerItem";
 
 const Viewer = () => {
@@ -57,13 +57,13 @@ const Viewer = () => {
 	};
 
 	return (
-		<div style={{padding: "12px"}}>{
+		<div style={{padding: "12px", display: "flex", flexWrap: "wrap"}}>{
 			["deck", "railing", "skirting", "steps", "roof", "exterior_doors", "exterior_locks"]
 			.filter((key) => {
 				const catalogue = data[key] || {};
 				return catalogue.condition || catalogue.maintenance || catalogue.photo || catalogue.status;
 			})
-			.map((key) => <ViewerItem {...data[key]} _key={key} />)
+			.map((key) => <ViewerItem {...data[key]} _key={key} key={key} />)
 		}</div>
 	)
 };
